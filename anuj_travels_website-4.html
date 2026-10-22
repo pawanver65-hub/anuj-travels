@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Anuj Travels — bus services from Hazaribagh to Dhanbad and Bokaro. Your Journey, Our Responsibility.">
+  <title>Anuj Travels | Your Journey, Our Responsibility</title>
+  <style>
+    :root {
+      --red: #e51d2a;
+      --red-dark: #b90f1b;
+      --ink: #171d29;
+      --muted: #667085;
+      --light: #f6f7f9;
+      --white: #fff;
+      --radius: 18px;
+      --shadow: 0 12px 32px rgba(20, 28, 45, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1160px, 92%); margin: auto; }
+    .topbar { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); border-bottom: 1px solid #edf0f3; }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 900; letter-spacing: -.8px; font-size: 1.35rem; line-height: 1.05; }
+    .brand-mark { width: 48px; height: 48px; display: grid; place-items: center; background: var(--red); color: white; border-radius: 14px; font-size: 1.55rem; }
+    .brand small { display: block; margin-top: 5px; color: var(--muted); font-size: .7rem; font-weight: 500; letter-spacing: 0; }
+    .nav-links { display: flex; align-items: center; gap: 26px; font-size: .92rem; font-weight: 700; }
+    .nav-links a:hover { color: var(--red); }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border: 0; border-radius: 11px; padding: 13px 19px; font-size: .93rem; font-weight: 800; cursor: pointer; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-red { background: var(--red); color: white; box-shadow: 0 8px 18px rgba(229,29,42,.2); }
+    .btn-red:hover { background: var(--red-dark); }
+    .btn-white { background: white; color: var(--red-dark); }
+    .hero { position: relative; isolation: isolate; min-height: 570px; display: flex; align-items: center; color: white; background: #171d29; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background: url("https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=2000&q=85") center 55%/cover no-repeat; }
+    .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(12,18,28,.91) 0%, rgba(12,18,28,.76) 45%, rgba(12,18,28,.16) 100%); }
+    .hero-content { padding: 80px 0; max-width: 670px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: #ffd7da; font-weight: 800; text-transform: uppercase; letter-spacing: 2.5px; font-size: .8rem; }
+    .eyebrow::before { content: ""; width: 28px; height: 3px; background: var(--red); }
+    h1 { font-size: clamp(2.7rem, 6vw, 5.25rem); line-height: .99; letter-spacing: -2.5px; margin: 20px 0 18px; }
+    h1 span { color: #ff3542; }
+    .hero h2 { font-size: clamp(1.1rem, 2.5vw, 1.55rem); margin: 0 0 8px; }
+    .hero p { color: #e7eaf0; max-width: 520px; margin: 0 0 28px; font-size: 1.05rem; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .trust-row { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 34px; color: #f0f2f6; font-size: .85rem; }
+    .trust-row span { display: flex; align-items: center; gap: 8px; }
+    .trust-row b { color: white; }
+    section { padding: 78px 0; }
+    .section-head { text-align: center; margin: 0 auto 34px; max-width: 650px; }
+    .section-head .eyebrow { color: var(--red); }
+    .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.15; margin: 12px 0 9px; letter-spacing: -1px; }
+    .section-head p { margin: 0; color: var(--muted); }
+    .routes { background: var(--light); }
+    .route-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .route-card { background: white; border: 1px solid #edf0f3; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: grid; grid-template-columns: 42% 1fr; min-height: 250px; }
+    .route-photo { min-height: 100%; background-size: cover; background-position: center; }
+    .route-info { padding: 25px; display: flex; flex-direction: column; align-items: flex-start; }
+    .route-info h3 { font-size: 1.35rem; margin: 0 0 9px; line-height: 1.2; }
+    .route-tag { background: #fff0f1; color: var(--red-dark); border-radius: 30px; padding: 6px 11px; font-size: .78rem; font-weight: 800; margin-bottom: 15px; }
+    .route-path { color: var(--muted); font-size: .88rem; margin: 0 0 18px; }
+    .route-info .btn { margin-top: auto; width: 100%; }
+    .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .service { padding: 28px 20px; border: 1px solid #edf0f3; border-radius: var(--radius); text-align: center; transition: transform .2s, box-shadow .2s; }
+    .service:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .service-icon { display: grid; place-items: center; margin: 0 auto 17px; width: 62px; height: 62px; border-radius: 18px; background: #fff0f1; color: var(--red); font-size: 1.8rem; }
+    .service h3 { margin: 0 0 8px; font-size: 1.05rem; }
+    .service p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .about { background: #fff8f8; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .about-photo { min-height: 380px; border-radius: 22px; background: url("https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85") center/cover; box-shadow: var(--shadow); }
+    .about-copy h2 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.1; letter-spacing: -1px; margin: 10px 0 18px; }
+    .about-copy p { color: #596273; }
+    .about-points { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+    .point { border-left: 3px solid var(--red); padding-left: 12px; }
+    .point strong { display: block; font-size: .95rem; }
+    .point small { color: var(--muted); }
+    .contact { background: #171d29; color: white; }
+    .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 38px; align-items: center; }
+    .contact h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.15; margin: 10px 0; }
+    .contact p { color: #c6ccd6; }
+    .contact-details { display: grid; gap: 15px; }
+    .contact-item { padding: 16px 18px; border: 1px solid #343b49; border-radius: 14px; display: flex; gap: 14px; align-items: center; }
+    .contact-item .service-icon { margin: 0; flex-shrink: 0; }
+    .contact-item small { display: block; color: #b8c0cd; }
+    .contact-item strong { overflow-wrap: anywhere; }
+    footer { background: #0d1119; color: #aeb5c1; padding: 24px 0; font-size: .86rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .footer-inner strong { color: white; }
+    .floating-wa { position: fixed; right: 18px; bottom: 18px; z-index: 30; background: #1fa855; color: white; width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; font-size: 1.55rem; box-shadow: 0 8px 24px #0003; }
+    @media (max-width: 900px) {
+      .nav-links { gap: 14px; }
+      .nav-links a:not(.btn) { display: none; }
+      .route-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { gap: 28px; }
+    }
+    @media (max-width: 620px) {
+      .nav { min-height: 70px; }
+      .brand { font-size: 1.05rem; }
+      .brand-mark { width: 42px; height: 42px; }
+      .nav .btn { padding: 10px 12px; font-size: .78rem; }
+      .hero { min-height: 560px; }
+      .hero::after { background: linear-gradient(90deg, rgba(12,18,28,.92), rgba(12,18,28,.57)); }
+      .hero-content { padding: 64px 0; }
+      h1 { letter-spacing: -1.5px; }
+      section { padding: 58px 0; }
+      .route-card { grid-template-columns: 1fr; }
+      .route-photo { min-height: 190px; }
+      .route-info { padding: 22px; }
+      .services-grid { gap: 12px; }
+      .service { padding: 22px 12px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-photo { min-height: 250px; }
+      .about-points { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Anuj Travels home">
+        <span class="brand-mark">🚌</span>
+        <span>ANUJ TRAVELS<small>Your Journey, Our Responsibility</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#routes">Routes</a>
+        <a href="#services">Services</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-red" href="https://wa.me/917004952278?text=Hello%20Anuj%20Travels%2C%20I%20want%20bus%20booking%20information." target="_blank" rel="noopener">☏ Book on WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow">Welcome to</span>
+          <h1><span>ANUJ</span><br>TRAVELS</h1>
+          <h2>Operating Since 1995</h2>
+          <p>Your Journey, Our Responsibility. Travel with confidence on our Hazaribagh routes.</p>
+          <div class="hero-actions">
+            <a class="btn btn-red" href="#routes">Explore Our Routes →</a>
+            <a class="btn btn-white" href="https://wa.me/917004952278?text=Hello%20Anuj%20Travels%2C%20please%20share%20bus%20booking%20details." target="_blank" rel="noopener">WhatsApp Booking</a>
+          </div>
+          <div class="trust-row">
+            <span>✓ <b>Trusted service</b></span>
+            <span>◷ <b>Convenient routes</b></span>
+            <span>✦ <b>Since 1995</b></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="routes" id="routes">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Where we go</span>
+          <h2>Our Bus Routes</h2>
+          <p>Plan your journey from Hazaribagh to your destination.</p>
+        </div>
+        <div class="route-grid">
+          <article class="route-card">
+            <div class="route-photo" role="img" aria-label="Hazaribagh city view" style="background-image:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=80')"></div>
+            <div class="route-info">
+              <h3>Hazaribagh → Dhanbad</h3>
+              <span class="route-tag">Via Bagodar and Dumri</span>
+              <p class="route-path">📍 Hazaribagh → Bagodar → Dumri → Dhanbad</p>
+              <a class="btn btn-red" href="https://wa.me/917004952278?text=Hello%20Anuj%20Travels%2C%20I%20need%20booking%20information%20for%20Hazaribagh%20to%20Dhanbad." target="_blank" rel="noopener">Enquire & Book →</a>
+            </div>
+          </article>
+          <article class="route-card">
+            <div class="route-photo" role="img" aria-label="Bokaro landscape" style="background-image:url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=900&q=80&sat=-35')"></div>
+            <div class="route-info">
+              <h3>Hazaribagh → Bokaro</h3>
+              <span class="route-tag">Via Gomia, Tenughat and Petarwar</span>
+              <p class="route-path">📍 Hazaribagh → Gomia → Tenughat → Petarwar → Bokaro</p>
+              <a class="btn btn-red" href="https://wa.me/917004952278?text=Hello%20Anuj%20Travels%2C%20I%20need%20booking%20information%20for%20Hazaribagh%20to%20Bokaro." target="_blank" rel="noopener">Enquire & Book →</a>
+            </div>
+          </article>
+        </div>
+        <p style="text-align:center;color:#667085;font-size:.85rem;margin:24px 0 0">For current timings, fares and seat availability, please contact us directly.</p>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Travel made simpler</span>
+          <h2>Our Services</h2>
+          <p>Get in touch for booking details and available bus options.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service"><div class="service-icon">🎟️</div><h3>Booking Enquiries</h3><p>Contact us for ticket and booking information.</p></article>
+          <article class="service"><div class="service-icon">🛏️</div><h3>Sleeper Services</h3><p>Ask about sleeper bus availability on your route.</p></article>
+          <article class="service"><div class="service-icon">🚌</div><h3>Non-AC Buses</h3><p>Ask our team about available non-AC services.</p></article>
+          <article class="service"><div class="service-icon">🛡️</div><h3>Travel Support</h3><p>Reach out for route and journey-related queries.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-grid">
+        <div class="about-photo" role="img" aria-label="Passenger bus on a road"></div>
+        <div class="about-copy">
+          <span class="eyebrow">A journey with trust</span>
+          <h2>About Anuj Travels</h2>
+          <p>Operating since 1995, Anuj Travels helps passengers plan journeys from Hazaribagh towards Dhanbad and Bokaro. Our promise is simple: <strong>Your Journey, Our Responsibility.</strong></p>
+          <div class="about-points">
+            <div class="point"><strong>Since 1995</strong><small>Travel experience</small></div>
+            <div class="point"><strong>Key Routes</strong><small>Dhanbad & Bokaro</small></div>
+            <div class="point"><strong>Easy Contact</strong><small>WhatsApp enquiries</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow">Let's get you moving</span>
+          <h2>Ready for your next journey?</h2>
+          <p>Message us on WhatsApp for booking information, route details, timings and fares.</p>
+          <a class="btn btn-red" href="https://wa.me/917004952278?text=Hello%20Anuj%20Travels%2C%20please%20help%20me%20with%20booking%20details." target="_blank" rel="noopener">Start a WhatsApp Chat →</a>
+        </div>
+        <div class="contact-details">
+          <a class="contact-item" href="tel:7004952278"><span class="service-icon">☎️</span><span><small>Call us</small><strong>7004952278</strong></span></a>
+          <a class="contact-item" href="https://wa.me/917004952278" target="_blank" rel="noopener"><span class="service-icon">💬</span><span><small>WhatsApp booking</small><strong>Chat with Anuj Travels</strong></span></a>
+          <a class="contact-item" href="https://www.instagram.com/anujbus_1995/" target="_blank" rel="noopener"><span class="service-icon">◎</span><span><small>Instagram</small><strong>@anujbus_1995</strong></span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div><strong>ANUJ TRAVELS</strong><br>Your Journey, Our Responsibility</div>
+      <div>© 2026 Anuj Travels · Trusted Travel Since 1995</div>
+    </div>
+  </footer>
+
+  <a class="floating-wa" href="https://wa.me/917004952278?text=Hello%20Anuj%20Travels%2C%20I%20need%20booking%20information." target="_blank" rel="noopener" aria-label="Book on WhatsApp">☏</a>
+</body>
+</html>
